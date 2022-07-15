@@ -3,13 +3,14 @@
 <form class="w-100 mt-4">
   <mat-form-field appearance="fill" class="w-100">
     <mat-label>Email</mat-label>
-    <input matInput type="email" required>
+    <input matInput type="email" required [(ngModel)]="input.userNameOrEmailAddress" name="email">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="w-100">
     <mat-label>Password</mat-label>
-    <input matInput type="password" required>
+    <input matInput [(ngModel)]="input.password" type="password" required name="password">
   </mat-form-field>
 </form>
 
-<button class="btn btn-primary w-100">Login</button>
+<button class="btn btn-primary w-100" (click)="login()">Login</button>
+<button mat-stroked-button color="primary" class="w-100 mt-3" [routerLink]="'../register'">Register</button>

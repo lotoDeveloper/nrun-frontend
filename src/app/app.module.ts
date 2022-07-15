@@ -9,6 +9,7 @@ import {AuthService} from "../auth/auth.service";
 import {HttpErrorInterceptor} from "./remote/http-error.interceptor";
 import {TokenInterceptor} from "./remote/token.interceptor";
 import {LoadingInterceptor} from "./remote/loading.interceptor";
+import {FormsModule} from "@angular/forms";
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -26,7 +27,7 @@ function appInitializer(authService: AuthService) {
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule,HttpClientModule
+    BrowserAnimationsModule,HttpClientModule,FormsModule
   ],
   providers: [
     {

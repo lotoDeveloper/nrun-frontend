@@ -1,5 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {Observable, BehaviorSubject, of, Subscription} from 'rxjs';
+import {Observable, BehaviorSubject, of, Subscription, EMPTY} from 'rxjs';
 import {map, catchError, switchMap, finalize} from 'rxjs/operators';
 import {environment} from 'src/environments/environment';
 import {Router} from '@angular/router';
@@ -62,7 +62,11 @@ export class AuthService implements OnDestroy {
           this.logout();
         }
         return result.result;
-      } ),
+      } ,),
+      catchError((err, caught) => {
+        this.logout();
+        return EMPTY;
+      }),
       finalize(() => this.isLoadingSubject.next(false))
     );
   }

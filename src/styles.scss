@@ -3,5 +3,38 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.avatar-big {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+.post-block {
+  border-radius: 15px;
+  height: 150px;
+}
+
+
+.text-gray {
+  color: rgba(96, 96, 96, 0.87);
+}
+
+.timeLineImage {
+  border-radius: 10px;
+}

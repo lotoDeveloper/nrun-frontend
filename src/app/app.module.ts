@@ -21,13 +21,15 @@ function appInitializer(authService: AuthService) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule,HttpClientModule,FormsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
     {

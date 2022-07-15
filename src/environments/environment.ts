@@ -7,7 +7,7 @@ export const environment = {
   jwtName: 'jwt',
   EncJwtName: 'enc_jwt',
   refJwtName: 'jwt_Revive',
-  apiUrl : "https://localhost:44311/"
+  apiUrl : "https://localhost:44311"
 };
 
 /*

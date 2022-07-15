@@ -55,14 +55,14 @@ export class AuthService implements OnDestroy {
   getUserByToken(): Observable<UserType> {
     this.isLoadingSubject.next(true);
     return this.profileRemoteService.getOwnProfile().pipe(
-      map((result: any) => {
+      map((result:any) => {
         if (result.result) {
-          this.currentUserSubject.next(result.result);
+          this.currentUserSubject.next(result.result.user);
         } else {
           this.logout();
         }
         return result.result;
-      }),
+      } ),
       finalize(() => this.isLoadingSubject.next(false))
     );
   }

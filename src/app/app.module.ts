@@ -12,7 +12,7 @@ import {LoadingInterceptor} from "./remote/loading.interceptor";
 
 function appInitializer(authService: AuthService) {
   return () => {
-    return new Promise((resolve : any) => {
+    return new Promise((resolve:any) => {
       authService.getUserByToken().subscribe().add(resolve);
     });
   };

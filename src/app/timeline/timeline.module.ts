@@ -9,6 +9,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {MatInputModule} from "@angular/material/input";
   imports: [
     CommonModule,
     TimelineRoutingModule,
+    FormsModule,
     MatTabsModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule
   ]
 })

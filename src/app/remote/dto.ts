@@ -303,6 +303,7 @@ export interface IChangeUserLanguageDto {
 export class CommentDto implements ICommentDto {
   text: string | undefined;
   creatorUser: UserDto;
+  creationTime: Date;
 
   constructor(data?: ICommentDto) {
     if (data) {
@@ -317,6 +318,7 @@ export class CommentDto implements ICommentDto {
     if (_data) {
       this.text = _data["text"];
       this.creatorUser = _data["creatorUser"] ? UserDto.fromJS(_data["creatorUser"]) : <any>undefined;
+      this.creationTime = _data["creationTime"] ? new Date(_data["creationTime"].toString()) : <any>undefined;
     }
   }
 
@@ -331,6 +333,7 @@ export class CommentDto implements ICommentDto {
     data = typeof data === 'object' ? data : {};
     data["text"] = this.text;
     data["creatorUser"] = this.creatorUser ? this.creatorUser.toJSON() : <any>undefined;
+    data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
     return data;
   }
 
@@ -345,6 +348,7 @@ export class CommentDto implements ICommentDto {
 export interface ICommentDto {
   text: string | undefined;
   creatorUser: UserDto;
+  creationTime: Date;
 }
 
 export class CommentInput implements ICommentInput {
@@ -1257,7 +1261,7 @@ export class PostDto implements IPostDto {
   user: UserDto;
   creationTime: Date;
   likeCount: number;
-  isLikeedByCurrentUser: boolean;
+  isLikedByCurrentUser: boolean;
   comments: CommentDto[] | undefined;
 
   constructor(data?: IPostDto) {
@@ -1277,7 +1281,7 @@ export class PostDto implements IPostDto {
       this.user = _data["user"] ? UserDto.fromJS(_data["user"]) : <any>undefined;
       this.creationTime = _data["creationTime"] ? new Date(_data["creationTime"].toString()) : <any>undefined;
       this.likeCount = _data["likeCount"];
-      this.isLikeedByCurrentUser = _data["isLikeedByCurrentUser"];
+      this.isLikedByCurrentUser = _data["isLikedByCurrentUser"];
       if (Array.isArray(_data["comments"])) {
         this.comments = [] as any;
         for (let item of _data["comments"])
@@ -1301,7 +1305,7 @@ export class PostDto implements IPostDto {
     data["user"] = this.user ? this.user.toJSON() : <any>undefined;
     data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
     data["likeCount"] = this.likeCount;
-    data["isLikeedByCurrentUser"] = this.isLikeedByCurrentUser;
+    data["isLikedByCurrentUser"] = this.isLikedByCurrentUser;
     if (Array.isArray(this.comments)) {
       data["comments"] = [];
       for (let item of this.comments)
@@ -1325,7 +1329,7 @@ export interface IPostDto {
   user: UserDto;
   creationTime: Date;
   likeCount: number;
-  isLikeedByCurrentUser: boolean;
+  isLikedByCurrentUser: boolean;
   comments: CommentDto[] | undefined;
 }
 
@@ -1386,6 +1390,7 @@ export interface IProfileDto {
 
 export class ProfileInput implements IProfileInput {
   name: string | undefined;
+  image: string | undefined;
 
   constructor(data?: IProfileInput) {
     if (data) {
@@ -1399,6 +1404,7 @@ export class ProfileInput implements IProfileInput {
   init(_data?: any) {
     if (_data) {
       this.name = _data["name"];
+      this.image = _data["image"];
     }
   }
 
@@ -1412,6 +1418,7 @@ export class ProfileInput implements IProfileInput {
   toJSON(data?: any) {
     data = typeof data === 'object' ? data : {};
     data["name"] = this.name;
+    data["image"] = this.image;
     return data;
   }
 
@@ -1425,6 +1432,7 @@ export class ProfileInput implements IProfileInput {
 
 export interface IProfileInput {
   name: string | undefined;
+  image: string | undefined;
 }
 
 export class RegisterInput implements IRegisterInput {

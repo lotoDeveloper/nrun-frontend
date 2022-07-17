@@ -1,33 +1,39 @@
-<div class="row justify-content-start">
-  <div class="col-auto">
-    <img class="avatar-big"  src="assets/authwallpaper.png" alt="">
+<div *ngIf="profile" class="">
+
+  <input #ProfileImage type="file" [hidden]="true" (change)="upload($event)">
+
+  <div class="row justify-content-start">
+    <div class="col-auto">
+      <img class="avatar-big"  [src]="profile.user.image" alt="" (click)="ProfileImage.click()">
+    </div>
+
+    <div class="col-auto row">
+      <div class="col-auto text-center w-auto">
+        <h4 class="mt-2 m-0"><b>{{profile.postCount}}</b></h4>
+        <h4 class="mt-2 text-gray">posts</h4>
+      </div>
+
+      <div class="col-auto text-center mx-2">
+        <h4 class="mt-2 m-0"><b>{{profile.follwerCount}}</b></h4>
+        <h4 class="mt-2 text-gray">Followers</h4>
+      </div>
+
+      <div class="col-auto text-center w-auto">
+        <h4 class="mt-2 m-0"><b>{{profile.followingCount}}</b></h4>
+        <h4 class="mt-2 text-gray">Following</h4>
+      </div>
+    </div>
+
   </div>
 
-  <div class="col-auto row">
-    <div class="col-auto text-center w-auto">
-      <h4 class="mt-2 m-0"><b>80</b></h4>
-      <h4 class="mt-2 text-gray">posts</h4>
-    </div>
+  <h3 class="mt-1 m-0"><b>{{profile.user.name}}</b></h3>
+  <h4 class="text-gray">{{profile.user.emailAddress}}</h4>
 
-    <div class="col-auto text-center mx-2">
-      <h4 class="mt-2 m-0"><b>80</b></h4>
-      <h4 class="mt-2 text-gray">Followers</h4>
-    </div>
+  <button *ngIf="authService.currentUserValue.id != profile.user.id" mat-flat-button class="w-100">FOLLOW</button>
 
-    <div class="col-auto text-center w-auto">
-      <h4 class="mt-2 m-0"><b>80</b></h4>
-      <h4 class="mt-2 text-gray">Following</h4>
-    </div>
+  <div class="row justify-content-start mt-3">
+    <img *ngFor="let i of posts" class="col-6 post-block my-2" [src]="i.image" alt="" [routerLink]="'../../post/'+i.id">
+
   </div>
-
-</div>
-
-<h3 class="mt-1 m-0"><b>User Name</b></h3>
-<h4 class="text-gray">sdasdnk@yahoo.com</h4>
-
-<button mat-flat-button class="w-100">FOLLOW</button>
-
-<div class="row justify-content-start mt-3">
-  <img *ngFor="let i of [0,0,0,0,0,0,0,0,0]" class="col-6 post-block my-2" src="assets/authwallpaper.png" alt="" >
 
 </div>
